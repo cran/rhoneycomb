@@ -1,6 +1,6 @@
 Package: rhoneycomb
 Title: Analysis of Honeycomb Selection Designs
-Version: 1.0.0
+Version: 2.0.0
 Authors@R: c(
     person(given="Anastasios"   ,family="Katsileros"    ,email="katsileros@aua.gr"  ,role=c("aut")),
     person(given="Nikos"        ,family="Antonetsis"    ,email="stud610027@aua.gr"  ,role=c("aut","cre")),
@@ -19,7 +19,7 @@ VignetteBuilder: knitr
 LazyData: true
 Imports: stats, utils, graphics
 NeedsCompilation: no
-Packaged: 2023-01-26 15:53:31 UTC; User
+Packaged: 2023-02-11 14:16:35 UTC; User
 Author: Anastasios Katsileros [aut],
   Nikos Antonetsis [aut, cre],
   Marietta Gkika [aut],
@@ -28,4 +28,4 @@ Author: Anastasios Katsileros [aut],
   Penelope Bebeli [aut]
 Maintainer: Nikos Antonetsis <stud610027@aua.gr>
 Repository: CRAN
-Date/Publication: 2023-01-26 19:00:02 UTC
+Date/Publication: 2023-02-11 14:40:02 UTC

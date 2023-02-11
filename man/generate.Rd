@@ -2,18 +2,18 @@
 % Please edit documentation in R/main.R
 \name{generate}
 \alias{generate}
-\title{Available replicated honeycomb selection designs.}
+\title{Available honeycomb selection designs.}
 \usage{
-generate(R_gen = NULL)
+generate(E_gen = NULL)
 }
 \arguments{
-\item{R_gen}{A single number or vector containing the replicated selection designs.}
+\item{E_gen}{A single number or a vector of entries.}
 }
 \value{
 A dataframe.
 }
 \description{
-This function is used to generate the available replicated honeycomb selection designs including K parameters.
+This function is used to generate the available  honeycomb selection designs including k parameters.
 }
 \examples{
 generate(1:50)

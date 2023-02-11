@@ -1,12 +1,12 @@
-#' @title Replicated honeycomb selection designs.
+#' @title Construction of the honeycomb selection design.
 #' 
-#' @description This function creates a data frame of a replicated honeycomb selection design.
+#' @description This function creates a data frame of a  honeycomb selection design.
 #'
-#' @param R The R design.
-#' @param K The K parameter.
+#' @param E The number of entries.
+#' @param K The k parameter.
 #' @param rows The number of rows. 
 #' @param plpr The number of plants per row.
-#' @param distance Distance between plants in meters.
+#' @param distance The plant-to-plant distance in meters.
 #'  
 #' @param poly If TRUE the polygon pattern is displayed.
 
@@ -24,14 +24,15 @@
 #' 
 #' 
 
-#' @examples HDR(7,2,10,10,1)
+#' @examples HSD(7,2,10,10,1)
 
 #' @export
 
 
 
 
-HDR<-function(R,K,rows,plpr,distance,poly=TRUE ){
+HSD<-function(E,K,rows,plpr,distance,poly=TRUE ){
+    R<-E
     #Added these two lines as suggested so the old adjustments will be restored 
     oldpar <- graphics::par(no.readonly = TRUE) 
     on.exit(graphics::par(oldpar))  
@@ -146,13 +147,13 @@ HDR<-function(R,K,rows,plpr,distance,poly=TRUE ){
 }
 
 
-#' @title Non-replicated honeycomb selection design.
+#' @title Construction of the honeycomb selection design without control.
 #' 
-#' @description This function creates a data frame of an unreplicated honeycomb selection design.
+#' @description This function creates a data frame of an  honeycomb selection design (one entry, without control).
 #'
 #' @param  rows The number of rows. 
 #' @param  plpr The number of plants per row.
-#' @param  distance Distance between plants in meters.
+#' @param  distance The plant-to-plant distance in meters.
 #'  
 #' @param  poly If TRUE set polygon pattern is displayed.
 #' @references 
@@ -166,12 +167,12 @@ HDR<-function(R,K,rows,plpr,distance,poly=TRUE ){
 #' 
 #' Tokatlidis I., and Vlachostergios D. (2016). Sustainable Stewardship of the Landrace Diversity. Diversity 8(4):29. \doi{10.3390/d8040029}
 #' @return A dataframe.
-#' @examples HDNR0(10,10,1)
+#' @examples HSD0(10,10,1)
 #' @export
 
 
 
-HDNR0<-function(rows,plpr,distance,poly=TRUE){
+HSD0<-function(rows,plpr,distance,poly=TRUE){
     #Added these two lines as suggested so the old adjustments will be restored 
     oldpar <- graphics::par(no.readonly = TRUE) 
     on.exit(graphics::par(oldpar))  
@@ -215,9 +216,9 @@ HDNR0<-function(rows,plpr,distance,poly=TRUE){
     return(Main_Data_Frame)
 }
 
-#' @title Non-replicated honeycomb selection design with one control.
+#' @title Construction of the honeycomb selection design with one control.
 #' 
-#' @description This function creates a data frame of an unreplicated honeycomb selection design with one control.
+#' @description This function creates a data frame of an  honeycomb selection design  (one entry, one control).
 #' @param  K The K parameter.  
 #' @param  rows The number of rows. 
 #' @param  plpr The number of plants per row.
@@ -237,11 +238,11 @@ HDNR0<-function(rows,plpr,distance,poly=TRUE){
 #' 
 #' 
 #' @return A dataframe.
-#' @examples HDNR1(1,10,10,1) 
+#' @examples HSD01(1,10,10,1) 
 #' @export
 
 
-HDNR1<-function(K,rows,plpr,distance,poly=TRUE){
+HSD01<-function(K,rows,plpr,distance,poly=TRUE){
     #Added these two lines as suggested so the old adjustments will be restored 
     oldpar <- graphics::par(no.readonly = TRUE) 
     on.exit(graphics::par(oldpar)) 
@@ -335,12 +336,12 @@ HDNR1<-function(K,rows,plpr,distance,poly=TRUE){
 }
 
 
-#' @title Non-replicated honeycomb selection design with three controls.
+#' @title Construction of the honeycomb selection design with three controls.
 #' 
-#' @description This function creates a data frame of an unreplicated honeycomb selection design with three controls.
+#' @description This function creates a data frame of a  honeycomb selection design (one entry, three controls).
 #'
 #' 
-#' @param K The K parameter.
+#' @param K The k parameter.
 #' @param rows The number of rows. 
 #' @param plpr The number of plants per row.
 #' @param distance Distance between plants in meters.
@@ -362,12 +363,12 @@ HDNR1<-function(K,rows,plpr,distance,poly=TRUE){
 #' Tokatlidis I., and Vlachostergios D. (2016). Sustainable Stewardship of the Landrace Diversity. Diversity 8(4):29. \doi{10.3390/d8040029}
 #' 
 #' 
-#' @examples HDNR3(1,10,10,1)
+#' @examples HSD03(1,10,10,1)
 #' @export
 
 
 
-HDNR3<-function(K,rows,plpr,distance,poly=TRUE){
+HSD03<-function(K,rows,plpr,distance,poly=TRUE){
     #Added these two lines as suggested so the old adjustments will be restored 
     oldpar <- graphics::par(no.readonly = TRUE) 
     on.exit(graphics::par(oldpar))  
@@ -467,11 +468,11 @@ HDNR3<-function(K,rows,plpr,distance,poly=TRUE){
 #' @description This function analyzes the response variable of the data frame.
 #' @param Response_Vector A vector containing the response variable data.
 #' @param ring The number of plants per moving ring.
-#' @param blocks The complete moving replicate.
-#' @param row_element The position of the plant (number of row) in the center of a complete moving replicate/ring.
-#' @param plant_element The position of the plant (number of plant) in the center of a complete moving replicate/ring.  
+#' @param blocks The moving circular block.
+#' @param row_element The position of the plant (number of row) in the centerof a moving ring/circular block.
+#' @param plant_element  The position of the plant (number of plant) in the center of a moving ring/circular block.  
 #' @param CRS The number of selected plants used for the CRS index.
-#' @param Main_Data_Frame A data frame containing the design's information
+#' @param Main_Data_Frame A data frame generated by one of the functions HSD(), HSD0(), HSD01() and HSD03().
 
 #' @return A list.
 #' @references 
@@ -485,7 +486,7 @@ HDNR3<-function(K,rows,plpr,distance,poly=TRUE){
 #' 
 #' Tokatlidis I., and Vlachostergios D. (2016). Sustainable Stewardship of the Landrace Diversity. Diversity 8(4):29. \doi{10.3390/d8040029}
 #' 
-#' @examples main_data<-HDR(7,2,10,10,1)
+#' @examples main_data<-HSD(7,2,10,10,1)
 #' main_data$Data<-wheat_data$total_yield
 #' 
 #' analysis(main_data,"Data",6)

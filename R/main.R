@@ -329,9 +329,9 @@ return_ungrouped<-function(R_gen){
 }   
 
 
-#' @title Available replicated honeycomb selection designs.
-#' @param R_gen A single number or vector containing the replicated selection designs.
-#' @description This function is used to generate the available replicated honeycomb selection designs including K parameters.
+#' @title Available honeycomb selection designs.
+#' @param E_gen A single number or a vector of entries.
+#' @description This function is used to generate the available  honeycomb selection designs including k parameters.
 #' @references 
 #' Fasoula V. (2013). Prognostic Breeding: A New Paradigm for Crop Improvement. Plant Breeding Reviews 37: 297-347. 10.1002/9781118497869.ch6. \doi{10.1002/9781118497869.ch6}
 #'
@@ -345,7 +345,8 @@ return_ungrouped<-function(R_gen){
 #' @return A dataframe.
 #' @examples generate(1:50)
 #' @export
-generate<-function(R_gen=NULL){
+generate<-function(E_gen=NULL){
+    R_gen<-E_gen
     if(is.null(R_gen)){R_gen<-as.integer(readline("Give an R value: "))}
    
     main_data<-data.frame("R"=c(),"X"=c(),"Y"=c(),"Type"=c(),"Groups"=c(),
