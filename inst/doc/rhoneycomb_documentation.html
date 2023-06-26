@@ -364,7 +364,7 @@ do so by using the following command which returns a data frame
 containing the available designs. Here we run the function with a vector
 that contains numbers 1 to 60:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">generate</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">60</span>)</span></code></pre></div>
-<pre><code>##     R X Y K1 K2 K3 K4 K5 K6      Type Groups GroupSize SetRows
+<pre><code>##     E X Y K1 K2 K3 K4 K5 K6      Type Groups GroupSize SetRows
 ## 1   3 1 1  1  1  -  -  -  - Ungrouped      1         3       2
 ## 2   4 2 0  -  -  1  2  -  -   Grouped      2         2       4
 ## 3   7 2 1  4  2  -  -  -  - Ungrouped      1         7      14
@@ -448,45 +448,37 @@ HSD03.</p>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>result<span class="ot">&lt;-</span><span class="fu">analysis</span>(main_data,<span class="st">&quot;Data&quot;</span>,<span class="dv">6</span>)</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(result[[<span class="dv">1</span>]],<span class="dv">10</span>) <span class="co">#Use the head function to get the top 10 rows.</span></span></code></pre></div>
-<pre><code>##    Entry Row Plant XPos      YPos Data NumR    MeanR       PYI     Mean  N
-## 1      7   1     1    1 0.8660254 5.33    2 3.130000 2.8997846 4.660000 14
-## 2      1   1     2    2 0.8660254 3.62    3 4.596667 0.6201991 4.285333 15
-## 3      2   1     3    3 0.8660254   NA    4 4.410000        NA 3.380000 14
-## 4      3   1     4    4 0.8660254 5.38    3 4.006667 1.8030100 5.471538 13
-## 5      4   1     5    5 0.8660254 4.10    4 4.300000 0.9091401 3.573571 14
-## 6      5   1     6    6 0.8660254 4.30    4 4.330000 0.9861912 4.806154 13
-## 7      6   1     7    7 0.8660254 5.86    4 4.025000 2.1196466 5.248667 15
-## 8      7   1     8    8 0.8660254 5.40    4 3.905000 1.9122534 4.660000 14
-## 9      1   1     9    9 0.8660254 1.97    4 5.095000 0.1495010 4.285333 15
-## 10     2   1    10   10 0.8660254 2.52    2 4.050000 0.3871605 3.380000 14
-##           sd        HI       PPE
-## 1  1.4376209 10.507105 30.468342
-## 2  0.8598245 24.839888 15.405676
-## 3  1.0165099 11.056310        NA
-## 4  1.7710395  9.544703 17.209195
-## 5  0.8958332 15.912949 14.467100
-## 6  1.2291700 15.288730 15.077611
-## 7  1.0800322 23.616992 50.059678
-## 8  1.4376209 10.507105 20.092248
-## 9  0.8598245 24.839888  3.713588
-## 10 1.0165099 11.056310  4.280566</code></pre>
+<pre><code>##    Entry Row Plant XPos  YPos Data NumR  MeanR    PYE E_Mean  N   E_sd    E_HI
+## 1      7   1     1    1 0.866 5.33    2 3.1300 2.8998 4.6600 14 1.4376 10.5071
+## 2      1   1     2    2 0.866 3.62    3 4.5967 0.6202 4.2853 15 0.8598 24.8399
+## 3      2   1     3    3 0.866   NA    4 4.4100     NA 3.3800 14 1.0165 11.0563
+## 4      3   1     4    4 0.866 5.38    3 4.0067 1.8030 5.4715 13 1.7710  9.5447
+## 5      4   1     5    5 0.866 4.10    4 4.3000 0.9091 3.5736 14 0.8958 15.9129
+## 6      5   1     6    6 0.866 4.30    4 4.3300 0.9862 4.8062 13 1.2292 15.2887
+## 7      6   1     7    7 0.866 5.86    4 4.0250 2.1196 5.2487 15 1.0800 23.6170
+## 8      7   1     8    8 0.866 5.40    4 3.9050 1.9123 4.6600 14 1.4376 10.5071
+## 9      1   1     9    9 0.866 1.97    4 5.0950 0.1495 4.2853 15 0.8598 24.8399
+## 10     2   1    10   10 0.866 2.52    2 4.0500 0.3872 3.3800 14 1.0165 11.0563
+##        PPE
+## 1  30.4683
+## 2  15.4057
+## 3       NA
+## 4  17.2092
+## 5  14.4671
+## 6  15.0776
+## 7  50.0597
+## 8  20.0922
+## 9   3.7136
+## 10  4.2806</code></pre>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>result[[<span class="dv">2</span>]] </span></code></pre></div>
-<pre><code>##   Entry  N     Mean       CV        sd        HI       GYI       GPE      mPYI
-## 1     1 15 4.285333 20.06435 0.8598245 24.839888 0.9142752 22.710493 0.9565541
-## 2     2 14 3.380000 30.07426 1.0165099 11.056310 0.5687758  6.288562 0.6300110
-## 3     3 13 5.471538 32.36822 1.7710395  9.544703 1.4904816 14.226205 1.7265854
-## 4     4 14 3.573571 25.06829 0.8958332 15.912949 0.6357885 10.117270 0.6605181
-## 5     5 13 4.806154 25.57492 1.2291700 15.288730 1.1500138 17.582250 1.2713303
-## 6     6 15 5.248667 20.57727 1.0800322 23.616992 1.3715312 32.391442 1.6861838
-## 7     7 14 4.660000 30.85023 1.4376209 10.507105 1.0811340 11.359589 1.3320829
-##        mPPE        CRS
-## 1 23.760698  0.4652112
-## 2  6.965597 -0.4171135
-## 3 16.479746  1.1981664
-## 4 10.510791 -0.3036280
-## 5 19.437026  1.1715222
-## 6 39.822589  1.3795885
-## 7 13.996335         NA</code></pre>
+<pre><code>##   Entry  N E_Mean      CV   E_sd    E_HI    GYI     GPE   mPYE    mPPE
+## 1     1 15 4.2853 20.0644 0.8598 24.8399 0.9143 22.7105 0.9566 23.7607
+## 2     2 14 3.3800 30.0743 1.0165 11.0563 0.5688  6.2886 0.6300  6.9656
+## 3     3 13 5.4715 32.3682 1.7710  9.5447 1.4905 14.2262 1.7266 16.4797
+## 4     4 14 3.5736 25.0683 0.8958 15.9129 0.6358 10.1173 0.6605 10.5108
+## 5     5 13 4.8062 25.5749 1.2292 15.2887 1.1500 17.5823 1.2713 19.4370
+## 6     6 15 5.2487 20.5773 1.0800 23.6170 1.3715 32.3914 1.6862 39.8226
+## 7     7 14 4.6600 30.8502 1.4376 10.5071 1.0811 11.3596 1.3321 13.9963</code></pre>
 </div>
 <div id="blocks-analysis" class="section level3">
 <h3>Blocks Analysis</h3>
@@ -497,45 +489,37 @@ specific block are displayed.</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>result<span class="ot">&lt;-</span><span class="fu">analysis</span>(main_data,<span class="st">&quot;Data&quot;</span>,<span class="at">blocks=</span><span class="cn">TRUE</span>,<span class="at">row_element=</span><span class="dv">5</span>,<span class="at">plant_element=</span><span class="dv">5</span>)</span></code></pre></div>
 <p><img src="data:image/png;base64,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" /><!-- --></p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(result[[<span class="dv">1</span>]],<span class="dv">10</span>) <span class="co">#Use the head function to get the top 10 rows.</span></span></code></pre></div>
-<pre><code>##    Entry Row Plant XPos      YPos Data SizeB    MeanB       PYI     Mean  N
-## 1      7   1     1    1 0.8660254 5.33     6 3.616667 2.1718881 4.660000 14
-## 2      1   1     2    2 0.8660254 3.62     5 3.938000 0.8450175 4.285333 15
-## 3      2   1     3    3 0.8660254   NA     6 4.186667       NaN 3.380000 14
-## 4      3   1     4    4 0.8660254 5.38     5 4.426000 1.4775485 5.471538 13
-## 5      4   1     5    5 0.8660254 4.10     6 4.321667 0.9000470 3.573571 14
-## 6      5   1     6    6 0.8660254 4.30     6 4.641667 0.8582010 4.806154 13
-## 7      6   1     7    7 0.8660254 5.86     6 3.821667 2.3512003 5.248667 15
-## 8      7   1     8    8 0.8660254 5.40     6 4.018333 1.8059079 4.660000 14
-## 9      1   1     9    9 0.8660254 1.97     6 4.651667 0.1793557 4.285333 15
-## 10     2   1    10   10 0.8660254 2.52     5 4.644000 0.2944535 3.380000 14
-##           sd        HI       PPE
-## 1  1.4376209 10.507105 22.820257
-## 2  0.8598245 24.839888 20.990141
-## 3  1.0165099 11.056310       NaN
-## 4  1.7710395  9.544703 14.102762
-## 5  0.8958332 15.912949 14.322402
-## 6  1.2291700 15.288730 13.120803
-## 7  1.0800322 23.616992 55.528279
-## 8  1.4376209 10.507105 18.974864
-## 9  0.8598245 24.839888  4.455176
-## 10 1.0165099 11.056310  3.255569</code></pre>
+<pre><code>##    Entry Row Plant XPos  YPos Data SizeB  MeanB    PYE E_Mean  N   E_sd    E_HI
+## 1      7   1     1    1 0.866 5.33     6 3.6167 2.1719 4.6600 14 1.4376 10.5071
+## 2      1   1     2    2 0.866 3.62     5 3.9380 0.8450 4.2853 15 0.8598 24.8399
+## 3      2   1     3    3 0.866   NA     6 4.1867    NaN 3.3800 14 1.0165 11.0563
+## 4      3   1     4    4 0.866 5.38     5 4.4260 1.4775 5.4715 13 1.7710  9.5447
+## 5      4   1     5    5 0.866 4.10     6 4.3217 0.9000 3.5736 14 0.8958 15.9129
+## 6      5   1     6    6 0.866 4.30     6 4.6417 0.8582 4.8062 13 1.2292 15.2887
+## 7      6   1     7    7 0.866 5.86     6 3.8217 2.3512 5.2487 15 1.0800 23.6170
+## 8      7   1     8    8 0.866 5.40     6 4.0183 1.8059 4.6600 14 1.4376 10.5071
+## 9      1   1     9    9 0.866 1.97     6 4.6517 0.1794 4.2853 15 0.8598 24.8399
+## 10     2   1    10   10 0.866 2.52     5 4.6440 0.2945 3.3800 14 1.0165 11.0563
+##        PPE    CRS
+## 1  22.8203 1.2413
+## 2  20.9901 0.9865
+## 3      NaN 0.5665
+## 4  14.1028 1.6905
+## 5  14.3224 0.6504
+## 6  13.1208 1.2570
+## 7  55.5283 1.6977
+## 8  18.9749 1.2413
+## 9   4.4552 0.9865
+## 10  3.2556 0.5665</code></pre>
 <div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>result[[<span class="dv">2</span>]] </span></code></pre></div>
-<pre><code>##   Entry  N     Mean       CV        sd        HI       GYI       GPE      mPYI
-## 1     1 15 4.285333 20.06435 0.8598245 24.839888 0.9142752 22.710493 0.9864759
-## 2     2 14 3.380000 30.07426 1.0165099 11.056310 0.5687758  6.288562 0.5664656
-## 3     3 13 5.471538 32.36822 1.7710395  9.544703 1.4904816 14.226205 1.6905052
-## 4     4 14 3.573571 25.06829 0.8958332 15.912949 0.6357885 10.117270 0.6503943
-## 5     5 13 4.806154 25.57492 1.2291700 15.288730 1.1500138 17.582250 1.2570241
-## 6     6 15 5.248667 20.57727 1.0800322 23.616992 1.3715312 32.391442 1.6977492
-## 7     7 14 4.660000 30.85023 1.4376209 10.507105 1.0811340 11.359589 1.2413205
-##        mPPE        CRS
-## 1 24.503951  0.4652112
-## 2  6.263019 -0.4171135
-## 3 16.135371  1.1981664
-## 4 10.349692 -0.3036280
-## 5 19.218303  1.1715222
-## 6 40.095729  1.3795885
-## 7 13.042686         NA</code></pre>
+<pre><code>##   Entry  N E_Mean      CV   E_sd    E_HI    GYI     GPE   mPYE    mPPE     CRS
+## 1     1 15 4.2853 20.0644 0.8598 24.8399 0.9143 22.7105 0.9865 24.5040  0.4652
+## 2     2 14 3.3800 30.0743 1.0165 11.0563 0.5688  6.2886 0.5665  6.2630 -0.4171
+## 3     3 13 5.4715 32.3682 1.7710  9.5447 1.4905 14.2262 1.6905 16.1354  1.1982
+## 4     4 14 3.5736 25.0683 0.8958 15.9129 0.6358 10.1173 0.6504 10.3497 -0.3036
+## 5     5 13 4.8062 25.5749 1.2292 15.2887 1.1500 17.5823 1.2570 19.2183  1.1715
+## 6     6 15 5.2487 20.5773 1.0800 23.6170 1.3715 32.3914 1.6977 40.0957  1.3796
+## 7     7 14 4.6600 30.8502 1.4376 10.5071 1.0811 11.3596 1.2413 13.0427      NA</code></pre>
 </div>
 </div>
 <div id="honeycomb-selection-design-with-one-entry" class="section level2">
@@ -586,20 +570,27 @@ argument in the function:</p>
 </div>
 <div id="analysis" class="section level3">
 <h3>Analysis</h3>
-<p>The analysis function returns only one data frame.</p>
+<p>The analysis function returns three data frames.</p>
 <div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>result<span class="ot">&lt;-</span><span class="fu">analysis</span>(main_data,<span class="st">&quot;Data&quot;</span>)</span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(result[[<span class="dv">1</span>]],<span class="dv">10</span>) <span class="co">#Use the head function to get the top 10 rows.</span></span></code></pre></div>
-<pre><code>##       Entry Row Plant XPos      YPos Data NumR    MeanR       PYI
-## 1  Control1   1     1    1 0.8660254 5.33    2 3.130000 2.8997846
-## 2         2   1     2    2 0.8660254 3.62    3 4.596667 0.6201991
-## 3         3   1     3    3 0.8660254   NA    4 4.410000        NA
-## 4         4   1     4    4 0.8660254 5.38    3 4.006667 1.8030100
-## 5         5   1     5    5 0.8660254 4.10    4 4.300000 0.9091401
-## 6         6   1     6    6 0.8660254 4.30    4 4.330000 0.9861912
-## 7         7   1     7    7 0.8660254 5.86    4 4.025000 2.1196466
-## 8  Control1   1     8    8 0.8660254 5.40    4 3.905000 1.9122534
-## 9         8   1     9    9 0.8660254 1.97    4 5.095000 0.1495010
-## 10        9   1    10   10 0.8660254 2.52    2 4.050000 0.3871605</code></pre>
+<pre><code>##       Entry Row Plant XPos  YPos Data NumR  MeanR    PYE
+## 1  Control1   1     1    1 0.866 5.33    2 3.1300 2.8998
+## 2         2   1     2    2 0.866 3.62    3 4.5967 0.6202
+## 3         3   1     3    3 0.866   NA    4 4.4100     NA
+## 4         4   1     4    4 0.866 5.38    3 4.0067 1.8030
+## 5         5   1     5    5 0.866 4.10    4 4.3000 0.9091
+## 6         6   1     6    6 0.866 4.30    4 4.3300 0.9862
+## 7         7   1     7    7 0.866 5.86    4 4.0250 2.1196
+## 8  Control1   1     8    8 0.866 5.40    4 3.9050 1.9123
+## 9         8   1     9    9 0.866 1.97    4 5.0950 0.1495
+## 10        9   1    10   10 0.866 2.52    2 4.0500 0.3872</code></pre>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>result[[<span class="dv">2</span>]]</span></code></pre></div>
+<pre><code>##        Entry  N  Mean     sd      CV
+## 1   Control1 19 4.660 1.4376 30.8502
+## 2 Population 85 4.452 1.3810 31.0189</code></pre>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>result[[<span class="dv">3</span>]]</span></code></pre></div>
+<pre><code>##   GrandMean     sd      CV Ring CRS
+## 1    4.4817 1.3835 30.8705    6   -</code></pre>
 </div>
 </div>
 

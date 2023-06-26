@@ -11,7 +11,7 @@ analysis(
   blocks = FALSE,
   row_element = NULL,
   plant_element = NULL,
-  CRS = 5
+  CRS = NULL
 )
 }
 \arguments{
@@ -23,7 +23,7 @@ analysis(
 
 \item{blocks}{The moving circular block.}
 
-\item{row_element}{The position of the plant (number of row) in the centerof a moving ring/circular block.}
+\item{row_element}{The position of the plant (number of row) in the center of a moving ring/circular block.}
 
 \item{plant_element}{The position of the plant (number of plant) in the center of a moving ring/circular block.}
 

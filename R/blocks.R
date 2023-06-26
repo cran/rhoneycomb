@@ -320,7 +320,12 @@ if(nrow(summary_table_global)!=0)  {
     
     #summary_table_global<<-summary_table_global
 }
-return_value<-list(Main_Data_Frame[,!names(Main_Data_Frame) %in% c("mPPE","mPYI","GPE","GYI","CRS")],summary_table_global)
+
+
+ 
+ 
+#This function returns its result to analysis function
+return_value<-list(Main_Data_Frame[,!names(Main_Data_Frame) %in% c("mPPE","mPYE","GPE","GYI","CRS")],summary_table_global)
 #cat("\n\"Main_Data_Frame\" and \"summary_table_global\" have been modified\n\n")
 
 return(return_value)

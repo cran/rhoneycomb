@@ -121,8 +121,10 @@ main_data$Data<-wheat_data$main_spike_weight
 head(main_data,10) #Use the head function to get the top 10 rows.
 ```
 ### Analysis
-The analysis function returns only one data  frame.
+The analysis function returns three data frames.
 ```{r}
 result<-analysis(main_data,"Data")
 head(result[[1]],10) #Use the head function to get the top 10 rows.
+result[[2]]
+result[[3]]
 ```

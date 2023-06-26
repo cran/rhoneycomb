@@ -426,7 +426,7 @@ generate<-function(E_gen=NULL){
 
     #Move Groups and plants per group at the end 
     return_value<-data.frame(
-        "R"=return_value$R,"X"=return_value$X,"Y"=return_value$Y,"K1"=return_value$K1,"K2"=return_value$K2,"K3"=return_value$K3,
+        "E"=return_value$R,"X"=return_value$X,"Y"=return_value$Y,"K1"=return_value$K1,"K2"=return_value$K2,"K3"=return_value$K3,
         "K4"=return_value$K4,"K5"=return_value$K5,"K6"=return_value$K6,"Type"=return_value$Type,
         "Groups"=return_value$Groups,"GroupSize"=return_value$GroupSize , "SetRows"=2*return_value$GroupSize/gcd_vector
     )

@@ -44,4 +44,6 @@ head(main_data,10) #Use the head function to get the top 10 rows.
 ## -----------------------------------------------------------------------------
 result<-analysis(main_data,"Data")
 head(result[[1]],10) #Use the head function to get the top 10 rows.
+result[[2]]
+result[[3]]
 

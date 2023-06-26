@@ -21,7 +21,7 @@ HSD01(K, rows, plpr, distance, poly = TRUE)
 A dataframe.
 }
 \description{
-This function creates a data frame of an  honeycomb selection design  (one entry, one control).
+This function creates a data frame of a  honeycomb selection design  (one entry, one control).
 }
 \examples{
 HSD01(1,10,10,1) 

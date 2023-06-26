@@ -19,7 +19,7 @@ HSD0(rows, plpr, distance, poly = TRUE)
 A dataframe.
 }
 \description{
-This function creates a data frame of an  honeycomb selection design (one entry, without control).
+This function creates a data frame of a  honeycomb selection design (one entry, without control).
 }
 \examples{
 HSD0(10,10,1)

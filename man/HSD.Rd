@@ -4,7 +4,7 @@
 \alias{HSD}
 \title{Construction of the honeycomb selection design.}
 \usage{
-HSD(E, K, rows, plpr, distance, poly = TRUE)
+HSD(E, K, rows, plpr, distance, poly = TRUE, control = FALSE)
 }
 \arguments{
 \item{E}{The number of entries.}
@@ -18,6 +18,8 @@ HSD(E, K, rows, plpr, distance, poly = TRUE)
 \item{distance}{The plant-to-plant distance in meters.}
 
 \item{poly}{If TRUE the polygon pattern is displayed.}
+
+\item{control}{Convert the design to controlled.}
 }
 \value{
 A dataframe.
