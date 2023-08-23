@@ -7,7 +7,7 @@
 analysis(
   Main_Data_Frame = NULL,
   Response_Vector = NULL,
-  ring = 6,
+  circle = 6,
   blocks = FALSE,
   row_element = NULL,
   plant_element = NULL,
@@ -19,7 +19,7 @@ analysis(
 
 \item{Response_Vector}{A vector containing the response variable data.}
 
-\item{ring}{The number of plants per moving ring.}
+\item{circle}{The number of plants per moving ring.}
 
 \item{blocks}{The moving circular block.}
 

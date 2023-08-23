@@ -22,7 +22,7 @@ analize_blocks(
 
 \item{CRS}{Number of top plants used for the CRS index.}
 
-\item{rp_unrep}{Replicated of unreplicated design.}
+\item{rep_unrep}{Replicated of unreplicated design.}
 }
 \value{
 A dataframe.

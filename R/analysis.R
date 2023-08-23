@@ -492,7 +492,7 @@ HSD03<-function(K,rows,plpr,distance,poly=TRUE){
 #' 
 #' @description This function analyzes the response variable of the data frame.
 #' @param Response_Vector A vector containing the response variable data.
-#' @param ring The number of plants per moving ring.
+#' @param circle The number of plants per moving ring.
 #' @param blocks The moving circular block.
 #' @param row_element The position of the plant (number of row) in the center of a moving ring/circular block.
 #' @param plant_element  The position of the plant (number of plant) in the center of a moving ring/circular block.  
@@ -516,7 +516,11 @@ HSD03<-function(K,rows,plpr,distance,poly=TRUE){
 #' 
 #' analysis(main_data,"Data",6)
 #' @export
-analysis<-function(Main_Data_Frame=NULL,Response_Vector=NULL,ring=6,blocks=FALSE,row_element=NULL,plant_element=NULL,CRS=NULL   ){
+analysis<-function(Main_Data_Frame=NULL,Response_Vector=NULL,circle=6,blocks=FALSE,row_element=NULL,plant_element=NULL,CRS=NULL   ){
+    
+    #Changed this for better fit in the theory (previously reffered ring now became circle)
+    ring<-circle
+    
     #add this so that is known if CRS is null for later use.
     if(is.null(CRS)){
         null_crs<-TRUE
@@ -588,8 +592,11 @@ analysis<-function(Main_Data_Frame=NULL,Response_Vector=NULL,ring=6,blocks=FALSE
                 Main_Data_Frame[[2]]$CRS[i]<-NA
             }
         }
+        #CHANGED Changed the column names so that they fit better to the theory
+        #GYI to EYI
+        #GPE to EPE
         colnames(Main_Data_Frame[[1]])<-c("Entry","Row","Plant","XPos","YPos","Data","SizeB","MeanB","PYE","E_Mean","N","E_sd","E_HI","PPE","CRS")
-        colnames(Main_Data_Frame[[2]])<-c("Entry","N","E_Mean","CV","E_sd","E_HI","GYI","GPE","mPYE","mPPE","CRS")
+        colnames(Main_Data_Frame[[2]])<-c("Entry","N","E_Mean","CV","E_sd","E_HI","EYI","EPE","mPYE","mPPE","CRS")
         
 
         #Add these quantities for the whole experiment also (mentioned afterwards)
@@ -951,7 +958,7 @@ analysis<-function(Main_Data_Frame=NULL,Response_Vector=NULL,ring=6,blocks=FALSE
 
 
 
-    #Here some name changes were made for the columns
+    #Here some name changes were made for the columns #CHANGES (changes in the nammes were made again)
     if(rep_unrep=="rep"){
         colnames(Main_Data_Frame)<-c("Entry" ,"Row","Plant","XPos","YPos", "Data","NumR","MeanR","PYE","E_Mean","N","E_sd","E_HI","GYI","PPE","GPE","mPYE" ,"mPPE","CRS")
         colnames(summary_table_global)<-c("Entry","N","E_Mean","CV","E_sd","E_HI","GYI","GPE","mPYE","mPPE","CRS")
@@ -961,7 +968,8 @@ analysis<-function(Main_Data_Frame=NULL,Response_Vector=NULL,ring=6,blocks=FALSE
     }
  
     #print(Main_Data_Frame)
-    #print(summary_table_global)
+    #print(summary_table_global) 
+
     return_value<-list(Main_Data_Frame[,!names(Main_Data_Frame) %in% c("mPPE","mPYE","GPE","GYI","CRS")],summary_table_global)
     
 
@@ -1058,12 +1066,31 @@ analysis<-function(Main_Data_Frame=NULL,Response_Vector=NULL,ring=6,blocks=FALSE
     return_value[[2]][-1]<-round(return_value[[2]][-1],4)
     return_value<-list( return_value[[1]],  return_value[[2]]    , "Trial"= round(trial_data_frame ,4)       )
     
+    #CHANGED rename the columns of the second data frame of the list so it fits the theory
+    #GPE to EPE
+    #GYI to EYI
+    #ring to circle
+    colnames(return_value[[2]])[ 
+         colnames(return_value[[2]])=="GPE"
+    ]<-"EPE"
+    colnames(return_value[[2]])[ 
+         colnames(return_value[[2]])=="GYI"
+    ]<-"EYI"
+    colnames(return_value[[3]])[ 
+         colnames(return_value[[3]])=="Ring"
+    ]<-"Circle"
+
+
+
     if(null_crs | rep_unrep=="unrep"){#If the crs was null then  do that
         return_value[[3]]['CRS']<-"-"
+        
         return(list(return_value[[1]],return_value[[2]][-11],return_value[[3]]))
 
         
     } else {
+
+
         return(return_value)
     }
     

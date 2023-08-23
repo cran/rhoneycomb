@@ -1,6 +1,6 @@
 Package: rhoneycomb
 Title: Analysis of Honeycomb Selection Designs
-Version: 2.3.3
+Version: 2.3.4
 Authors@R: c(
     person(given="Anastasios"   ,family="Katsileros"    ,email="katsileros@aua.gr"  ,role=c("aut")),
     person(given="Nikos"        ,family="Antonetsis"    ,email="stud610027@aua.gr"  ,role=c("aut","cre")),
@@ -13,13 +13,13 @@ Description: A useful statistical tool for the construction and analysis of Hone
 Depends: R (>= 4.2)
 License: GPL (>= 2)
 Encoding: UTF-8
-RoxygenNote: 7.2.2
+RoxygenNote: 7.2.3
 Suggests: knitr, rmarkdown
 VignetteBuilder: knitr
 LazyData: true
 Imports: stats, utils, graphics
 NeedsCompilation: no
-Packaged: 2023-06-13 19:09:35 UTC; User
+Packaged: 2023-08-23 18:31:51 UTC; Windows
 Author: Anastasios Katsileros [aut],
   Nikos Antonetsis [aut, cre],
   Marietta Gkika [aut],
@@ -28,4 +28,4 @@ Author: Anastasios Katsileros [aut],
   Penelope Bebeli [aut]
 Maintainer: Nikos Antonetsis <stud610027@aua.gr>
 Repository: CRAN
-Date/Publication: 2023-06-26 19:50:02 UTC
+Date/Publication: 2023-08-23 18:50:02 UTC

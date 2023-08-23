@@ -5,7 +5,7 @@
 #' @param row_element The row of the element which the block it belongs to will be displayed.
 #' @param plant_element The position of the element in the row which the block it belongs to will be displayed.
 #' @param CRS Number of top plants used for the CRS index.
-#' @param rp_unrep Replicated of unreplicated design.
+#' @param rep_unrep Replicated of unreplicated design.
 #' @return A dataframe.
 #' @keywords internal
 
@@ -251,16 +251,32 @@ if(rep_unrep=="rep"){
     for(i in Entry_for_CRS){
         #Convert Entry to numeric
         i<-as.numeric(i)
-        obs_for_CRS<-c()
-        #Select only rows with the same Entry
-        obs_for_CRS<-Main_Data_Frame[Main_Data_Frame$Entry==i,"Data"]
+        obs_for_CRS_Data<-c()
+        obs_for_CRS_PYI<-c()
+
+        #Select only rows with the same Entry.  
+        obs_for_CRS_Data<-Main_Data_Frame[Main_Data_Frame$Entry==i,"Data"] 
+
+        #This one was added (we need the data of the best  plants according to PYI )
+        obs_for_CRS_PYI<-Main_Data_Frame[Main_Data_Frame$Entry==i,"PYI"] 
+        dframe_obs_for_CRS<-data.frame(obs_for_CRS_Data, obs_for_CRS_PYI) #This one contains both data and PYI
+
+        #This was added (order the data frame according to PYI)
+
+        #Order the dframe according to PYI but chose the data 
+        dframe_obs_for_CRS<-dframe_obs_for_CRS[order(dframe_obs_for_CRS$obs_for_CRS_PYI,na.last=FALSE),]
+
+        #This 
         #Chose the  5 greatest plants and estimate mean
+        #obs_for_CRS<-sort(obs_for_CRS,na.last=FALSE)
          
-        obs_for_CRS<-sort(obs_for_CRS,na.last=FALSE)
+        #select the data from the plants of same entry , having the best PYI 
+        selection<-tail(dframe_obs_for_CRS$obs_for_CRS_Data,CRS ) #obs_for_CRS includes the Data ()
          
-        selection<-tail(obs_for_CRS,CRS )
-         
-        table_for_CRS$Mean_of_Max[i]<-mean(selection)
+
+
+        #insert the mean of the above selected best plants
+        table_for_CRS$Mean_of_Max[i]<-mean(selection, na.rm=TRUE)
         
 
     }
